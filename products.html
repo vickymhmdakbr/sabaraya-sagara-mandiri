@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produk | PT. Sabaraya Sagara Mandiri</title>
+  <meta name="description" content="Katalog produk PT. Sabaraya Sagara Mandiri: berbagai produk untuk mendukung kebutuhan laboratorium dan layanan kesehatan.">
+  <meta name="theme-color" content="#1515F5">
+  <link rel="icon" href="assets/logo/logo-ssm.png">
+
+  <!-- Fonts & Icons (CDN) - sama dengan index.html -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- style.css = style global (navbar, footer, tombol). products.css = khusus halaman ini -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <!-- ============ NAVBAR (sama dengan index.html, link disesuaikan untuk halaman ini) ============ -->
+  <header class="site-header" id="top">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="PT. Sabaraya Sagara Mandiri - kembali ke beranda">
+        <img class="brand-logo" src="assets/logo/logo-new.jpeg" alt="Logo PT. Sabaraya Sagara Mandiri">
+        <span class="brand-text" aria-hidden="true">Sabaraya<br>Sagara<br>Mandiri</span>
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Navigasi utama">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html#about">Tentang Kami</a></li>
+          <li><a class="nav-link" href="index.html#services">Layanan</a></li>
+          <li><a class="nav-link is-active" href="products.html" aria-current="page">Produk</a></li>
+          <li><a class="nav-link" href="index.html#partners">Mitra</a></li>
+          <li><a class="nav-link" href="index.html#contact">Kontak</a></li>
+          <li class="nav-cta-mobile"><a class="btn btn-primary" href="index.html#contact">Hubungi Kami</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary btn-sm nav-cta" href="index.html#contact">Hubungi Kami</a>
+
+      <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="site-nav">
+        <i class="bi bi-list icon-open" aria-hidden="true"></i>
+        <i class="bi bi-x-lg icon-close" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HEADER HALAMAN ============ -->
+    <section class="cat-hero" aria-labelledby="cat-title">
+      <div class="container">
+        <h1 id="cat-title">OUR <span>PRODUCTS</span></h1>
+        <p>Berbagai produk untuk mendukung kebutuhan laboratorium dan layanan kesehatan.</p>
+      </div>
+    </section>
+
+    <!-- ============ KATALOG ============ -->
+    <section class="cat-section" aria-label="Katalog produk">
+      <div class="container cat-layout">
+
+        <!-- Area produk (kiri) -->
+        <div class="cat-main">
+          <div class="cat-toolbar" id="cat-toolbar">
+            <!-- Filter kategori utama dibuat otomatis oleh js/products.js -->
+            <div class="cat-chips" id="cat-chips" role="group" aria-label="Filter kategori produk"></div>
+            <p class="cat-status" id="cat-status" aria-live="polite"></p>
+          </div>
+
+          <h2 class="cat-sr">Daftar produk</h2>
+          <!-- Kartu produk dibuat otomatis dari data di js/products.js. Tidak perlu menulis produk di sini. -->
+          <div class="cat-grid" id="cat-grid">
+            <noscript><p class="cat-noscript">Aktifkan JavaScript untuk melihat katalog produk.</p></noscript>
+          </div>
+        </div>
+
+        <!-- Sidebar Katalog (kanan) -->
+        <aside class="cat-side is-collapsed" id="cat-side" aria-label="Katalog">
+          <button class="cat-side-toggle" id="cat-side-toggle" type="button" aria-expanded="false" aria-controls="cat-side-body">
+            <span class="cat-side-title">KATALOG</span>
+            <span class="cat-chevron cat-side-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cat-side-body" id="cat-side-body">
+            <!-- Kategori & subkategori dibuat otomatis dari konfigurasi "catalog" di js/products.js -->
+            <div class="cat-tree" id="cat-tree"></div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (sama dengan index.html, link disesuaikan) ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="footer-logo brand" href="index.html" aria-label="PT. Sabaraya Sagara Mandiri - kembali ke beranda">
+          <img class="brand-logo" src="assets/logo/logo-new.jpeg" alt="Logo PT. Sabaraya Sagara Mandiri">
+          <span class="brand-text" aria-hidden="true">Sabaraya<br>Sagara<br>Mandiri</span>
+        </a>
+        <p>Reagen laboratorium, bahan, dan alat kesehatan untuk mendukung fasilitas kesehatan, laboratorium, dan institusi pendidikan.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Navigasi footer">
+        <h3>Navigasi</h3>
+        <ul>
+          <li><a href="index.html#about">Tentang Kami</a></li>
+          <li><a href="index.html#services">Layanan</a></li>
+          <li><a href="products.html">Produk</a></li>
+          <li><a href="index.html#partners">Mitra</a></li>
+          <li><a href="index.html#contact">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h3>Kontak</h3>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Rukan Riung Arum Square, Jl. Riung Arum Raya No. 51E, Bandung, Jawa Barat 40295</span></li>
+          <li><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+622287311000">(022) 87311000</a></li>
+          <li><i class="bi bi-clock" aria-hidden="true"></i><span>Senin - Jumat, 08:00 - 17:00 WIB</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 PT. Sabaraya Sagara Mandiri. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- script.js = navbar mobile & bayangan header (global). products.js = data + logika katalog. -->
+  <script src="js/script.js" defer></script>
+  <script src="js/products.js" defer></script>
+</body>
+</html>

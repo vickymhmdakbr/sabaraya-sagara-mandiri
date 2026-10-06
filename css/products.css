@@ -1,0 +1,380 @@
+/* =====================================================
+   PT. Sabaraya Sagara Mandiri - Halaman Products
+   Memakai variabel & komponen global dari style.css.
+   Semua class di file ini berawalan "cat-" agar tidak
+   bentrok dengan .product-grid / .product-card milik
+   section "Produk Unggulan" di index.html.
+   ===================================================== */
+
+/* ---------- 1. Header halaman (ringkas) ---------- */
+.cat-hero {
+  padding: 48px 0 40px;
+  text-align: center;
+  background: var(--light);
+  border-bottom: 1px solid #E6EAF3;
+}
+.cat-hero h1 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--dark);
+}
+.cat-hero h1 span { color: var(--primary); }
+.cat-hero h1::after {   /* aksen merah kecil */
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 4px;
+}
+.cat-hero p {
+  max-width: 36rem;
+  margin: 16px auto 0;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Teks khusus pembaca layar */
+.cat-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 2. Layout: produk (kiri) + sidebar (kanan) ---------- */
+.cat-section { padding: 48px 0 96px; background: var(--white); }
+
+.cat-layout {
+  display: grid;
+  /* sidebar ±22-28% lebar container */
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 26%, 312px);
+  gap: 40px;
+  align-items: start;
+}
+.cat-main { min-width: 0; }
+
+/* ---------- 3. Filter kategori utama + status ---------- */
+.cat-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+  scroll-margin-top: calc(var(--nav-h) + 16px);
+}
+.cat-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.cat-chip {
+  padding: .55rem 1.1rem;
+  border: 1.5px solid #D5DBEA;
+  border-radius: 999px;
+  background: #fff;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--dark);
+  cursor: pointer;
+  transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.cat-chip:hover { border-color: var(--primary); color: var(--primary); }
+.cat-chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.cat-status { font-size: .88rem; color: var(--muted); }
+.cat-status strong { color: var(--dark); font-weight: 600; }
+
+/* ---------- 4. Grid produk (otomatis menyesuaikan jumlah) ---------- */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #E3E8F2;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(20, 30, 80, .04);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+  animation: catIn .35s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+.cat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(21, 21, 245, .35);
+  box-shadow: 0 10px 24px rgba(21, 21, 245, .08);
+}
+@keyframes catIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Area foto: SELALU persegi (1:1). Foto diletakkan utuh (contain), tidak dipotong. */
+.cat-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f7f7f7;
+  border-radius: 12px;
+}
+.cat-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 24px;
+}
+
+/* Placeholder bila foto belum ada / gagal dimuat */
+.cat-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  text-align: center;
+  color: #8A93A8;
+  border: 1px dashed #CBD2E3;
+  border-radius: 12px;
+  margin: 12px;
+}
+.cat-placeholder svg { width: 40px; height: 40px; }
+.cat-placeholder span { font-size: .8rem; line-height: 1.4; }
+.cat-image.is-missing { padding: 0; }
+
+.cat-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+  padding: 16px 6px 6px;
+}
+.cat-label {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.cat-name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--dark);
+}
+
+/* ---------- 5. Empty state ---------- */
+.cat-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 56px 24px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--light);
+  border: 1px dashed #C9D2EC;
+  border-radius: 16px;
+}
+.cat-empty svg { width: 44px; height: 44px; color: var(--primary); opacity: .75; }
+.cat-empty p { font-size: 1rem; font-weight: 500; color: var(--dark); }
+.cat-empty-btn {
+  margin-top: 4px;
+  padding: .55rem 1.1rem;
+  border: 1.5px solid var(--primary);
+  border-radius: 999px;
+  background: #fff;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  cursor: pointer;
+  transition: background-color .25s var(--ease), color .25s var(--ease);
+}
+.cat-empty-btn:hover { background: var(--primary); color: #fff; }
+
+.cat-noscript { grid-column: 1 / -1; padding: 24px; text-align: center; color: var(--muted); }
+
+/* ---------- 6. Sidebar KATALOG (biru) ---------- */
+.cat-side {
+  top: calc(var(--nav-h) + 24px);
+  padding: 4px 20px 14px;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 20px;
+  box-shadow: 0 14px 36px rgba(21, 21, 245, .18);
+}
+
+.cat-side-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 0 14px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: #fff;
+  text-align: left;
+  cursor: default;          /* di desktop hanya judul; jadi tombol di mobile */
+}
+.cat-side-title {
+  position: relative;
+  padding-bottom: 10px;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+.cat-side-title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 28px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--red);
+}
+.cat-side-chevron { display: none; }
+
+/* Panah kecil (dibuat dengan CSS, tanpa icon font) */
+.cat-chevron {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);        /* tertutup: menunjuk ke kanan */
+  transition: transform .25s var(--ease);
+}
+.cat-group.is-open .cat-chevron { transform: rotate(45deg); }   /* terbuka: menunjuk ke bawah */
+
+.cat-group { border-top: 1px solid rgba(255, 255, 255, .18); }
+
+.cat-group-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 4px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: #fff;
+  cursor: pointer;
+}
+.cat-group-label { display: inline-flex; align-items: center; }
+.cat-group-label::before {      /* penanda kategori yang sedang aktif */
+  content: "";
+  width: 0;
+  height: 8px;
+  margin-right: 0;
+  border-radius: 50%;
+  background: #fff;
+  transition: width .25s var(--ease), margin-right .25s var(--ease);
+}
+.cat-group.is-current .cat-group-label::before { width: 8px; margin-right: 10px; }
+
+/* Accordion buka/tutup halus */
+.cat-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s var(--ease);
+}
+.cat-group.is-open .cat-panel { grid-template-rows: 1fr; }
+.cat-panel-inner { min-height: 0; overflow: hidden; }
+.cat-sublist { padding-bottom: 10px; }
+
+.cat-sub {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  padding: 9px 12px 9px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
+  font-size: .9rem;
+  line-height: 1.4;
+  text-align: left;
+  color: rgba(255, 255, 255, .9);
+  cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+.cat-sub:hover { background: rgba(255, 255, 255, .14); color: #fff; }
+.cat-sub[aria-current="true"] {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Fokus keyboard terlihat di atas latar biru */
+.cat-side :focus-visible { outline-color: #fff; outline-offset: 2px; }
+
+/* ---------- 7. Responsif ---------- */
+
+/* Laptop kecil / tablet landscape: sidebar tetap di kanan, grid 2 kolom */
+@media (max-width: 1099px) {
+  .cat-layout { gap: 28px; }
+  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tablet portrait & mobile: sidebar pindah ke atas sebagai accordion */
+@media (max-width: 899px) {
+  .cat-hero { padding: 40px 0 32px; }
+  .cat-section { padding: 32px 0 72px; }
+
+  .cat-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+
+  .cat-side {
+    position: static;
+    order: -1;
+    padding: 0 18px 4px;
+    border-radius: 16px;
+  }
+  .cat-side-toggle { padding: 16px 0; cursor: pointer; }
+  .cat-side-title { padding-bottom: 0; }
+  .cat-side-title::after { display: none; }
+  .cat-side-chevron { display: inline-block; transform: rotate(45deg); }
+  .cat-side:not(.is-collapsed) .cat-side-chevron { transform: rotate(-135deg); }
+  .cat-side.is-collapsed .cat-side-body { display: none; }
+  .cat-side:not(.is-collapsed) .cat-side-body { padding-bottom: 8px; }
+}
+
+/* Mobile: 1 kolom */
+@media (max-width: 599px) {
+  .cat-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .cat-image img { padding: 20px; }
+  .cat-chips { gap: 8px; }
+  .cat-chip { padding: .5rem .95rem; font-size: .74rem; }
+  .cat-hero p { font-size: .95rem; }
+}
